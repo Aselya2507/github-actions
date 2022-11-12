@@ -12,6 +12,8 @@ jobs:
   ansible:
     runs-on: ubuntu-latest
     env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
       ANSIBLE_HOST_KEY_CHECKING: False
       
     steps:
@@ -29,5 +31,5 @@ jobs:
           chmod 400 ansible_key
 
       - name: Check Inventory
-        run: ansible -i hosts --private-key=ansible_key all -m ping -u ec2-user
+        run: ansible -i aws_ec2.yml --private-key=ansible_key web1 -m ping -u ec2-user
      

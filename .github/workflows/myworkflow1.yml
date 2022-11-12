@@ -34,5 +34,5 @@ jobs:
         run: pip install boto3 boto botocore
 
       - name: Check Inventory
-        run: ansible -i aws_ec2.yml --private-key=ansible_key web1 -m ping -u ec2-user
+        run: ansible -vvv -i aws_ec2.yml --private-key=ansible_key web1 -m ping -u ec2-user
      

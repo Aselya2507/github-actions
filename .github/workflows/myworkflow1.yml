@@ -37,4 +37,7 @@ jobs:
 
       - name: Check Inventory
         run: ansible -i aws_ec2.yml --private-key=ansible_key web -m ping -u ec2-user
+
+      - name: Run Ansible Playbook
+        run: ansible-playbook -i aws_ec2.yml --private-key=ansible_key hostname.yml -u ec2-user -b 
      
